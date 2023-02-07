@@ -1,4 +1,6 @@
 
+[Wireframe](https://miro.com/app/board/uXjVOmVDOyA=/)
+
 ## API DOCS
 [documentation](https://disneyapi.dev/docs)
 
