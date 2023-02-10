@@ -6,12 +6,24 @@ const Nav = () => {
 
   const [click, setClick] = useState(false)
 
-  const searchInput = click &&  <Search />
+  const useToggle = (initialState) => {
+    const [toggleValue, setToggleValue] = useState(initialState);
+
+    const toggler = () => {
+      setToggleValue(!toggleValue) 
+    }
+
+    return [toggleValue, toggler]
+  }
+
+  const [toggle, setToggle] = useToggle()
+
+  const searchInput = toggle &&  <Search />
 
   return (
     <div>
       <p>Nav</p>
-      <button onClick={() => setClick(true)}>Search</button>
+      <button onClick={setToggle}>Search</button>
       <NavLink to='/favorites'>
         <button>Favorites</button>
       </NavLink>
