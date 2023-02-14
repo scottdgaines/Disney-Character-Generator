@@ -2,9 +2,9 @@ import cleanData from './utils'
 
 let errorMessage
 
-const fetchSearchData = async (query) => {
+const fetchData = async (endpoint) => {
     try {
-        const res = await fetch(`https://api.disneyapi.dev/character?name=${query}`)
+        const res = await fetch(`https://api.disneyapi.dev/character${endpoint}`)
         const data = await res.json()
         const cleanedData = await cleanData(data)
 
@@ -12,11 +12,11 @@ const fetchSearchData = async (query) => {
         return
     }
     return cleanedData
-    
+
     } catch (error) {
         errorMessage = error.message
         return errorMessage
     }
 }
 
-export default fetchSearchData
+export default fetchData

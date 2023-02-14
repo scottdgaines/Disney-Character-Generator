@@ -1,15 +1,24 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Card from '../Card/Card'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
-const Results = () => {
-  return (
-    <div>
-        <NavLink to='id'>
-            <Card />
-        </NavLink>
-    </div>
-  )
+const Results = ({ characters }) => {
+    const characterCards = characters.map(char => {
+        return (
+            <Link to={`/${char.id}`}>
+                <Card 
+                    key={char.id} 
+                    character={char} 
+                />
+            </Link>
+        )
+    })
+
+    return (
+        <div>
+            {characterCards}
+        </div>
+    )
 }
 
 export default Results

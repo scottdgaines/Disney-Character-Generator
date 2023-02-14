@@ -1,10 +1,11 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-const Card = () => {
+const Card = ({ character }) => {
   return (
         <div>
-        <p>card</p>
+        <p>{character.name}</p>
+        <img src={character.image} />
         </div>
   )
 }

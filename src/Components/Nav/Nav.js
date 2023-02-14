@@ -1,11 +1,9 @@
 import React, { useState } from 'react'
 import Search from '../Search/Search'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import fetchData from '../../apiCalls'
 
 const Nav = () => {
-
-  const [click, setClick] = useState(false)
-
   const useToggle = (initialState) => {
     const [toggleValue, setToggleValue] = useState(initialState);
 
@@ -17,16 +15,23 @@ const Nav = () => {
   }
 
   const [toggle, setToggle] = useToggle()
-
   const searchInput = toggle &&  <Search />
+
+  function fetchRandom() {
+    const charId = Math.floor(Math.random() * 5000)
+    fetchData(`s/${charId}`)
+  }
 
   return (
     <div>
       <p>Nav</p>
       <button onClick={setToggle}>Search</button>
-      <NavLink to='/favorites'>
+      <Link to='/:id'>
+        <button onClick={fetchRandom}>Generate Random</button>
+      </Link>
+      <Link to='/favorites'>
         <button>Favorites</button>
-      </NavLink>
+      </Link>
       {searchInput}
     </div>
   )
